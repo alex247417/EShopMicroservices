@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using System.Data;
+using System.Windows.Input;
 
 namespace BuildingBlocks.CQRS
 {
-    internal interface ICommand
+    public interface Icommand : ICommand<Unit>
+    {
+    }
+
+    public interface ICommand<out TResponse> : IRequest<TResponse>
     {
     }
 }

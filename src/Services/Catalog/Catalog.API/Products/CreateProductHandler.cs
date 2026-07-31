@@ -28,7 +28,7 @@ namespace Catalog.API.Products
             session.Store(product);
             await session.SaveChangesAsync(cancellationToken);
 
-            return new CreateProductResult(Guid.NewGuid());
+            return new CreateProductResult(product.Id);
         }
     }
 }

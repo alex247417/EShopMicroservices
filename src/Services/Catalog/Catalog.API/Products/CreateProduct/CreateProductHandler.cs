@@ -1,5 +1,4 @@
-﻿
-namespace Catalog.API.Products
+﻿namespace Catalog.API.Products.CreateProduct
 {
 
     public record CreateProductCommad(string Name, List<string> Category, string Descripition, string ImageFile, decimal Price)

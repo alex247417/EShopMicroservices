@@ -3,11 +3,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add Services to the contanier.
 
-builder.Services.AddCarter();
-builder.Services.AddMediatR(ConfigurationBinder =>
+var assembly = typeof(Program).Assembly;
+builder.Services.AddMediatR(config =>
 {
-    ConfigurationBinder.RegisterServicesFromAssembly(typeof(Program).Assembly);
+    config.RegisterServicesFromAssembly(assembly);
+    config.AddOpenBehavior(typeof(ValidationBehavior<,>));
+
 });
+
+builder.Services.AddValidatorsFromAssembly(assembly);
+
+builder.Services.AddCarter();
+
 builder.Services.AddMarten(opts =>
 {
     opts.Connection(builder.Configuration.GetConnectionString("Database")!);

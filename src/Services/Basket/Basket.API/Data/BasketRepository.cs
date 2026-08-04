@@ -1,7 +1,4 @@
-﻿using Basket.API.Models;
-using Marten;
-
-namespace Basket.API.Data;
+﻿namespace Basket.API.Data;
 
 public class BasketRepository(IDocumentSession session)
     : IBasketRepository
